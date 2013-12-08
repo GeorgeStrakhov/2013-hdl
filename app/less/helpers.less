@@ -1,0 +1,45 @@
+//helpers
+.align-center {
+	text-align: center;
+}
+
+.margin-top-lg {
+	.margin-top(25px);
+}
+
+.margin-top-md {
+	.margin-top(15px);
+}
+
+//mixins
+.rounded-corners (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.transition (@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-o-transition: @transition;
+}
+
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: @string;
+	-ms-transform: @string;
+	-o-transform: @string;
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow: @string;
+	box-shadow: @string;
+}
+
+.margin-top (@m: 10px) {
+	margin-top: @m;
+}
