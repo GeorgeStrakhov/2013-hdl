@@ -50,12 +50,31 @@
 				<hr />
 				<!-- footer -->
 				<div class="row spacer-y">
-					asd
+					<p class="HDLAuthor"></p>
 				</div>
 		</div>
 		<!-- after footer -->
 		<div class="footer spacer-y align-center">
-			proudly powered by <a href="http://2013.havedonelist.com">2013.havedonelist.com</a> || <a href="#createModal" data-toggl="modal">create your own</a>
+			proudly powered by <a href="http://2013.havedonelist.com">2013.havedonelist.com</a> || <a href="#createModal" data-toggle="modal">create your own havedonelist</a>
 		</div>
+
+		<!-- generate havedonelist modal -->
+		<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title">Create Your 2013 HaveDoneList</h4>
+					</div>
+					<div class="modal-body">
+						<textarea class="form-control" rows=10 id="newHDLInput"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" id="generateHDL">Create</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</body>
 </html>

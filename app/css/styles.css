@@ -6079,6 +6079,13 @@ body {
     padding-right: 5px;
   }
 }
+.singleDone {
+  text-transform: uppercase;
+}
+.modal .modal-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #cbc;

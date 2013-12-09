@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			dist: {
-				src: ['bower_components/jquery/jquery.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'app/js/*.js', '!app/js/built.min.js'],
+				src: ['bower_components/jquery/jquery.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'app/js/*.js', '!app/js/main.js', '!app/js/built.min.js', 'app/js/main.js'],
 				dest: 'app/js/built.min.js'
 			}
 		},

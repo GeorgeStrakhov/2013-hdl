@@ -1,29 +1,44 @@
 function initJS() {
+	registerListeners();
 	var dones = getDones();
+	var author = getAuthor();
+	prepopulateData({
+		author: author,
+		dones: dones
+	});
 	manifestify(dones);
 }
 
+function registerListeners() {
+	$('#generateHDL').on('click', function(){
+		var url = window.location.origin='?done='+encodeURIComponent($('#newHDLInput').val());
+		window.location.href=url;
+	});
+}
+
 function getDones() {
-	//fixture
-	var dones = [
-		'Leveled up in coding',
-		'Leveled up in design',
-		'Finally launched havedonelist'
-	];
+	var dones = String($.QueryString['done']);
 	return dones;
 }
 
+function getAuthor() {
+	var author = String($.QueryString['author']);
+	return author;
+}
+
+function prepopulateData(dataObj) {
+	$('#newHDLInput').val(dataObj.dones);
+	$('.HDLAuthor').text(dataObj.author);
+}
+
 function donesToLines(dones) {
-	var lines = '';
-	$.each(dones, function(k,v){
-		if(k != dones.length){
-			lines+='<p class="singleDone">'+v+'</p>';
+	donesLines = dones.trim().match(/[^\r\n]+/g);
+	$.each(donesLines, function(k,v){
+		if(String(v).length) {
+			donesLines[k] = '<p class="singleDone">'+String(v)+'</p>';
 		}
 	});
-
-	lines+='<p class="singleDone">It\'s been a very good year</p>';
-
-	return lines;
+	return donesLines;
 }
 
 function manifestify(dones) {
