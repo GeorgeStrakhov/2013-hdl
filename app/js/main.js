@@ -1,14 +1,17 @@
+//blast off
 function initJS() {
 	registerListeners();
-	var dones = getDones();
-	var author = getAuthor();
+	var dones = getParam('done');
+	var author = getParam('author');
+	var theme = getTheme(getParam('theme'));
 	prepopulateData({
 		author: author,
 		dones: dones
 	});
-	manifestify(dones);
+	manifestify(dones, theme);
 }
 
+//register event listeners
 function registerListeners() {
 	$('#generateHDL').on('click', function(){
 		var url = window.location.origin='?done='+encodeURIComponent($('#newHDLInput').val());
@@ -16,21 +19,18 @@ function registerListeners() {
 	});
 }
 
-function getDones() {
-	var dones = String($.QueryString['done']);
-	return dones;
+function getParam(pName) {
+	var p = String($.QueryString[pName]);
+	return p;
 }
 
-function getAuthor() {
-	var author = String($.QueryString['author']);
-	return author;
-}
-
+//prepopulate page elements with releveant data
 function prepopulateData(dataObj) {
 	$('#newHDLInput').val(dataObj.dones);
 	$('.HDLAuthor').text(dataObj.author);
 }
 
+//turn string with newline chars into an array of <p> elements
 function donesToLines(dones) {
 	donesLines = dones.trim().match(/[^\r\n]+/g);
 	$.each(donesLines, function(k,v){
@@ -41,9 +41,20 @@ function donesToLines(dones) {
 	return donesLines;
 }
 
-function manifestify(dones) {
+//join the <p>lines</p>, spice them up & return as HTML nodes ready to be appended
+function linesToText(donesLines, theme) {
+	var donesText = $.parseHTML(donesLines.join(''));
+	$.each(donesText, function(k,v){
+		$(v).addClass(theme+'-'+k);
+	});
+	return donesText;
+}
+
+//render manifesto
+function manifestify(dones, theme) {
 	var donesLines = donesToLines(dones);
-	$('.allDones').html(donesLines);
+	var donesText = linesToText(donesLines, theme);
+	$('.allDones').addClass(theme).append(donesText);
 	$('.singleDone').slabText();
 	$('.goodyear').slabText();
 }
