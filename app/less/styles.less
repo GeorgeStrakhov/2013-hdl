@@ -2,19 +2,67 @@
 
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 
+//import slabtext
+@import "../css/slabtext.css";
+
+//import helpers
 @import "helpers.less";
 
 //import fonts
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display|Gravitas+One|Vast+Shadow|Playfair+Display+SC:400,900,700|Jacques+Francois+Shadow|Abril+Fatface|Ewert&subset=latin,latin-ext);
 
 //variables
-@main-color: #FFF;
-@accent-color: #8BAB42;
-@bg-color: #8BAB42;
+@main-color: #333;
+@accent-color: #000;
+@bg-color: #FFF;
+@container-width: 60%;
+@default-font: 'Playfair Display', serif;
 
 //styles
 body {
-	background-color: @bg-color;
+	background-color: darken(@bg-color, 10%);
 	color: @main-color;
+	padding: 25px;
+	@media(max-width: @screen-lg) {
+		padding: 10px;
+	}
+	font-family: @default-font;
+	line-height: 140%;
+}
+
+.container {
+	width: @container-width;
+	@media(max-width: @screen-lg) {
+		width: 100%;
+	}
+	margin: 0 auto;
+	background-color: @bg-color;
+	border: 5px double lighten(@main-color, 20%);
+	.align-center;
+	.box-shadow(0 0 1em #222);
+}
+
+.logo {
+	width: 20%;
+	@media(max-width: @screen-lg) {
+		width: 50%;
+	}
+	margin: 0 auto;
+	max-width: 300px;
+}
+
+.footer {
+	.align-center;
+	.dotted-links(@main-color);
+}
+
+// styles for the lines
+
+.allDones {
+	padding-right: 10px;
+	@media(max-width: @screen-lg) {
+		padding-right: 5px;
+	}
 }
 
 //browsehappy prompt

@@ -1,3 +1,5 @@
+@import "../css/slabtext.css";
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display|Gravitas+One|Vast+Shadow|Playfair+Display+SC:400,900,700|Jacques+Francois+Shadow|Abril+Fatface|Ewert&subset=latin,latin-ext);
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article,
 aside,
@@ -6007,9 +6009,75 @@ td.visible-print {
 .margin-top-md {
   margin-top: 15px;
 }
+.spacer-y {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.spacer-y-lg {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.padding-x {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 body {
-  background-color: #8bab42;
-  color: #ffffff;
+  background-color: #e6e6e6;
+  color: #333333;
+  padding: 25px;
+  font-family: 'Playfair Display', serif;
+  line-height: 140%;
+}
+@media (max-width: 1200px) {
+  body {
+    padding: 10px;
+  }
+}
+.container {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 5px double #666666;
+  text-align: center;
+  -webkit-box-shadow: 0 0 1em #222222;
+  -moz-box-shadow: 0 0 1em #222222;
+  box-shadow: 0 0 1em #222222;
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+}
+.logo {
+  width: 20%;
+  margin: 0 auto;
+  max-width: 300px;
+}
+@media (max-width: 1200px) {
+  .logo {
+    width: 50%;
+  }
+}
+.footer {
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: #333333;
+  border-bottom: 1px dotted #333333;
+}
+.footer a:hover {
+  color: #000000;
+  text-decoration: none;
+  border-bottom: 1px solid #333333;
+}
+.allDones {
+  padding-right: 10px;
+}
+@media (max-width: 1200px) {
+  .allDones {
+    padding-right: 5px;
+  }
 }
 .browsehappy {
   margin: 0.2em 0;

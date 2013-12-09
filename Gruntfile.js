@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 		copy: {
 			buildAssets: {
 				cwd: 'app',
-				src: [ 'css/styles.min.css','js/built.min.js' ],
+				src: [ 'css/styles.min.css','js/built.min.js', 'img/png/**'],
 				dest: 'build',
 				expand: true
 			},
