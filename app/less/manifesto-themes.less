@@ -2,9 +2,11 @@
 
 //oldSanta
 .oldSanta {
+	//all lines
 	p {
 		text-transform: uppercase;
 	}
+	//lines
 	p:nth-child(2n+1) {
 		font-family: 'Jacques Francois Shadow', cursive;
 		font-weight: 400;
@@ -12,5 +14,27 @@
 	p:nth-child(2n+2) {
 		font-family: 'Playfair Display', serif;
 		font-weight: 400;
+	}
+	//specials: amp etc.
+	div.amp-div {
+		position: relative;
+		.amp-hr {
+			padding: 0;
+			border: none;
+			border-top: 4px double #666;
+			color: #333;
+			text-align: center;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.amp {
+			font-family: 'Ewert', cursive;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			display: inline-block;
+			padding: 0 0.25em;
+			background: white;
+		}
 	}
 }

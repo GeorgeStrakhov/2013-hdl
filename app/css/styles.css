@@ -6031,6 +6031,27 @@ td.visible-print {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
 }
+.oldSanta div.amp-div {
+  position: relative;
+}
+.oldSanta div.amp-div .amp-hr {
+  padding: 0;
+  border: none;
+  border-top: 4px double #666;
+  color: #333;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.oldSanta div.amp-div .amp {
+  font-family: 'Ewert', cursive;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: inline-block;
+  padding: 0 0.25em;
+  background: white;
+}
 body {
   background-color: #e6e6e6;
   color: #333333;
@@ -6080,14 +6101,6 @@ body {
   color: #000000;
   text-decoration: none;
   border-bottom: 1px solid #333333;
-}
-.allDones {
-  padding-right: 5px;
-}
-@media (max-width: 1200px) {
-  .allDones {
-    padding-right: 5px;
-  }
 }
 .modal .modal-title {
   text-align: center;
