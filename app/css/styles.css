@@ -1,5 +1,4 @@
 @import "../css/slabtext.css";
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display|Gravitas+One|Vast+Shadow|Playfair+Display+SC:400,900,700|Jacques+Francois+Shadow|Abril+Fatface|Ewert&subset=latin,latin-ext);
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article,
 aside,
@@ -6021,14 +6020,16 @@ td.visible-print {
   padding-left: 10px;
   padding-right: 10px;
 }
-.oldSanta p:nth-child(3n+1) {
-  background: #ff0000;
+.oldSanta p {
+  text-transform: uppercase;
 }
-.oldSanta p:nth-child(3n+2) {
-  background: #00ff00;
+.oldSanta p:nth-child(2n+1) {
+  font-family: 'Jacques Francois Shadow', cursive;
+  font-weight: 400;
 }
-.oldSanta p:nth-child(3n+3) {
-  background: #f3f300;
+.oldSanta p:nth-child(2n+2) {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
 }
 body {
   background-color: #e6e6e6;
@@ -6081,15 +6082,12 @@ body {
   border-bottom: 1px solid #333333;
 }
 .allDones {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 @media (max-width: 1200px) {
   .allDones {
     padding-right: 5px;
   }
-}
-.singleDone {
-  text-transform: uppercase;
 }
 .modal .modal-title {
   text-align: center;
