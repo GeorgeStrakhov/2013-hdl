@@ -16,13 +16,13 @@
             "headerBreakpoint"      : null,
             "viewportBreakpoint"    : null,
             // Don't attach a resize event
-            "noResizeEvent"         : true,
+            "noResizeEvent"         : false,
             // By many milliseconds do we throttle the resize event
             "resizeThrottleTime"    : 300,
             // The maximum pixel font size the script can set
             "maxFontSize"           : 999,
             // Do we try to tweak the letter-spacing or word-spacing?
-            "postTweak"             : false,
+            "postTweak"             : true,
             // Decimal precision to use when setting CSS values
             "precision"             : 3,
             // The min num of chars a line has to contain

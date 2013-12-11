@@ -3,11 +3,12 @@ function initJS() {
 	var dones = getParam('done');
 	var footer = getParam('footer');
 	var theme = getTheme(getParam('theme'));
+	var specialCases = getSpecialCases();
 	prepopulateData({
 		footer: footer,
 		dones: dones
 	});
-	manifestify(dones, theme);
+	manifestify(dones, theme, specialCases);
 }
 
 //register event listeners
@@ -44,18 +45,29 @@ function prepopulateData(dataObj) {
 }
 
 //turn string with newline chars into an array of <p> elements
-function donesToLines(dones) {
+function donesToLines(dones, specialCases) {
 	donesLines = dones.trim().match(/[^\r\n]+/g);
 	$.each(donesLines, function(k,v){
 		if(String(v).length) {
-			if(v=="&") {
-				donesLines[k] = '<div class="amp-div"><hr class="amp-hr" /><span class="amp">&amp;</span></div>';
-			} else {
-				donesLines[k] = '<p class="singleDone">'+String(v)+'</p>';
-			}
+			donesLines[k] = lineToHtml(v, specialCases);
 		}
 	});
 	return donesLines;
+}
+
+function lineToHtml(line, specialCases) {
+	var str = String(line);
+	//default
+	var HTML = '<p class="singleDone">'+str+'</p>';
+	//special cases
+	$.each(specialCases, function(){
+		//if matches a pattern
+		if(str.match(new RegExp(this.pattern, 'g'))) {
+			//then do the smart replacement
+			HTML = this.replacement(str);
+		}
+	});
+	return HTML;
 }
 
 //join the <p>lines</p>, spice them up & return as HTML nodes ready to be appended
@@ -75,7 +87,11 @@ function adjustLineHeights(){
 		//get this line's fontsize
 		var fontsize = parseInt($(this).find('span').first().css('font-size').split('px')[0], 10);
 		//get prev line's fontsize
-		var prevFontsize = parseInt($(this).prev().find('span').first().css('font-size').split('px')[0], 10);
+		var prevFontsize = getPrevFontSize($(this));
+		//special adjustment for special cases
+		if($(this).prev().hasClass('amp-div')){
+			prevFontsize = 10;
+		}
 		//calculate and apply (mostly negative) top margin adj
 		var adj = calculateMarginTopAdjustment(fontsize, prevFontsize);
 		$(this).css('margin-top', adj+'px');
@@ -90,41 +106,42 @@ function calculateMarginTopAdjustment(fontsize, prevFontsize) {
 	return topmargin;
 }
 
-//treat spacials such as line with a single amp etc.
-function treatSpecials() {
-	treatAmps();
-}
-
-function treatAmps() {
-	//amp - <div class="amp-div"><hr class="amp-hr"/><span class="amp">&amp;</span></div>
-	//scale amp to portion the size of the following
-	$('.amp-div').each(function(){
-		var ratio = 0.8;
-		var nextFontSize = parseInt($(this).next().find('span').first().css('font-size').split('px')[0], 10);
-		var fontSize = nextFontSize * ratio;
-		$(this).css('height', fontSize/2);
-		$(this).css('margin-top', fontSize/2);
-		$(this).css('margin-bottom', fontSize/3);
-		$(this).find('.amp').css('font-size', fontSize+'px');
-		var ampWidth = $(this).find('.amp').first().innerWidth();
-		var ampHeight = $(this).find('.amp').first().innerHeight();
-		$(this).find('.amp').css('margin-left', '-'+ ampWidth/2+'px');
-		$(this).find('.amp').css('top', '-'+ ampHeight/2+'px');
+//treat specialcases for lines such as line with a single amp etc.
+function treatSpecials(specialCases) {
+	$.each(specialCases, function(){
+		this.treatment();
 	});
 }
 
+//get next slabtexted item's fontsize
+function getNextFontSize(elem) {
+	var nextEl = elem.nextAll("p.singleDone:first");
+	if(!nextEl.length) {
+		return getPrevFontSize(elem);
+	}
+	return parseInt(nextEl.find('.slabtext').first().css('font-size').split('px')[0], 10);
+}
+
+function getPrevFontSize(elem) {
+	var prevEl = elem.prevAll("p.singleDone:first");
+	if(!prevEl.length) {
+		return getNextFontSize(elem);
+	}
+	return parseInt(prevEl.find('.slabtext').first().css('font-size').split('px')[0], 10);
+}
+
 //render manifesto
-function manifestify(dones, theme) {
+function manifestify(dones, theme, specialCases) {
 	var slabTextOptions = {
 		"noResizeEvent" : true,
-		"postTweak" : false
+		"postTweak" : true
 	};
-	var donesLines = donesToLines(dones);
+	var donesLines = donesToLines(dones, specialCases);
 	var donesText = linesToText(donesLines, theme);
 	$('.allDones').addClass(theme).html(donesText);
 	$('.singleDone').slabText(slabTextOptions);
 	adjustLineHeights();
-	treatSpecials();
+	treatSpecials(specialCases);
 	$('.goodyear').slabText(slabTextOptions);
 }
 

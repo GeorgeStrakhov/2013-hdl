@@ -57,7 +57,7 @@ module.exports = function(grunt) {
 				tasks: ['concat','uglify']
 			},
 			css: {
-				files: ['app/less/*.less'],
+				files: ['app/less/*.less', 'app/less/themes/*.less'],
 				tasks: ['less:style', 'cssmin'],
 			}
 		},

@@ -35,6 +35,14 @@ body {
 	@media(max-width: @screen-lg) {
 		width: 100%;
 	}
+	//for ultra-large screens limit width increase padding
+	@media(min-width: (@screen-lg*1.5)) {
+		padding-right: 100px;
+		padding-left: 100px;
+		text-align: center;
+	}
+	padding-left: 30px;
+	padding-right: 30px;
 	margin: 0 auto;
 	background-color: @bg-color;
 	border: 5px double lighten(@main-color, 20%);
