@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 	grunt.registerTask('watch', [ 'watch' ]);
 	grunt.registerTask('server', [ 'connect', 'watch' ]);
-
 	grunt.initConfig({
 		less: {
 			style: {
@@ -50,7 +49,7 @@ module.exports = function(grunt) {
 			},
 			html: {
 				files: ['app/html/*.html'],
-				tasks: ['inject:single']
+				tasks: ['inject:development']
 			},
 			js: {
 				files: ['app/js/*.js', '!app/js/built.min.js'],
@@ -62,8 +61,14 @@ module.exports = function(grunt) {
 			}
 		},
 		inject: {
-			single: {
-				scriptSrc: 'Workflow.js',
+			development: {
+				scriptSrc: 'DevelopmentWorkflow.js',
+				files: {
+					'app/index.html': 'app/html/index.html'
+				}
+			},
+			production: {
+				scriptSrc: 'ProductionWorkflow.js',
 				files: {
 					'app/index.html': 'app/html/index.html'
 				}
@@ -76,9 +81,15 @@ module.exports = function(grunt) {
 				dest: 'build',
 				expand: true
 			},
+			copyProductionScripts: {
+				cwd: 'app',
+				src: [ 'js/production/**'],
+				dest: 'build',
+				expand: true
+			},
 			buildHtml: {
 				cwd: 'app',
-				src: [ 'html/**' ],
+				src: [ 'index.html' ],
 				dest: 'build',
 				expand: true,
 				flatten: true
@@ -106,7 +117,7 @@ module.exports = function(grunt) {
 	grunt.registerTask(
 		'build',
 		'Clean up and copy only necessary files into the build directory',
-		[ 'clean', 'copy:buildAssets', 'copy:buildHtml' ]
+		[ 'inject:production', 'clean', 'copy:buildAssets', 'copy:copyProductionScripts','copy:buildHtml' ]
 	);
 
 };

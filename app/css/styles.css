@@ -6081,6 +6081,7 @@ td.visible-print {
   margin: 0px;
   padding: 15px 10px;
   z-index: 3;
+  font-family: 'Jacques Francois Shadow', cursive;
 }
 .oldSanta div.ribbon .ribbon-content:before,
 .oldSanta div.ribbon .ribbon-content:after {

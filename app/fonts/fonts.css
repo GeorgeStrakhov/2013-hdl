@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Abril Fatface';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abril Fatface'), local('AbrilFatface-Regular'), url('AbrilFatface.woff') format('woff');
+}
+@font-face {
+  font-family: 'Ewert';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ewert'), local('Ewert-Regular'), url('Ewert.woff') format('woff');
+}
+@font-face {
+  font-family: 'Gravitas One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gravitas One'), local('GravitasOne'), url('GravitasOne.woff') format('woff');
+}
+@font-face {
+  font-family: 'Jacques Francois Shadow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Jacques Francois Shadow'), local('JacquesFrancoisShadow-Regular'), url('JacquesFrancoisShadow.woff') format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url('PlayfairDisplay.woff') format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Playfair Display Bold'), local('PlayfairDisplay-Bold'), url('PlayfairDisplayBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Playfair Display Black'), local('PlayfairDisplay-Black'), url('PlayfairDisplayBlack.woff') format('woff');
+}
+@font-face {
+  font-family: 'Vast Shadow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Vast Shadow Regular'), local('VastShadow-Regular'), url('VastShadow.woff') format('woff');
+}

@@ -12,6 +12,8 @@ function getSpecialCases() {
 					var ratio = 0.8;
 					var nextFontSize = getNextFontSize($(this));
 					var fontSize = nextFontSize * ratio;
+					// var nextLetterCount = getLetterCount($(this),'next');
+					// if()
 					$(this).css('height', fontSize/1.5);
 					$(this).css('margin-top', fontSize/1.5);
 					$(this).css('margin-bottom', fontSize/3);

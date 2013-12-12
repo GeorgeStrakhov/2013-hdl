@@ -3,7 +3,7 @@ function initJS() {
 	var dones = getParam('done');
 	var footer = getParam('footer');
 	var theme = getTheme(getParam('theme'));
-	var specialCases = getSpecialCases();
+	var specialCases = getSpecialCases(); //TODO: pass the theme here so that we can treat things differently. rename the function. it's not just about special cases
 	prepopulateData({
 		footer: footer,
 		dones: dones
@@ -90,7 +90,7 @@ function adjustLineHeights(){
 		var prevFontsize = getPrevFontSize($(this));
 		//special adjustment for special cases
 		if($(this).prev().hasClass('amp-div')){
-			prevFontsize = 10;
+			prevFontsize = -1 * fontsize * 0.6;
 		}
 		//calculate and apply (mostly negative) top margin adj
 		var adj = calculateMarginTopAdjustment(fontsize, prevFontsize);
@@ -103,6 +103,7 @@ function calculateMarginTopAdjustment(fontsize, prevFontsize) {
 	var optRatio = 5.8;
 	var topmargin = 0;
 	topmargin = -1 * ((fontsize-prevFontsize)/optRatio);
+	console.log(topmargin);
 	return topmargin;
 }
 
